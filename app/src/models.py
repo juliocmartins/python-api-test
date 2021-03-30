@@ -42,16 +42,19 @@ class PokemonsTypes(db.Model):
 class Trainers(db.Model):
     __tablename__ = 'trainers'
 
-    def __init__(self,name):
-        self.name = name
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    team = db.relationship("Teams",backref="team", lazy="joined")
-    
+    team = db.relationship("Teams", uselist=False, backref="team")
 
+    def __init__(self,name):
+        self.name = name
+    
     def save(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
         db.session.commit()
 
 class Teams(db.Model):
@@ -60,9 +63,9 @@ class Teams(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     trainer_id = db.Column(db.Integer, db.ForeignKey('trainers.id'))
     name = db.Column(db.String(50))
-    pokemons = db.relationship("TeamPokemons",backref="pokemons", lazy="joined")
+    pokemons = db.relationship("TeamPokemons",backref="pokemons")
 
-    def __init__(self,name, trainer_id):
+    def __init__(self,name,trainer_id):
         self.name = name
         self.trainer_id = trainer_id
 
@@ -70,10 +73,14 @@ class Teams(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
 class TeamPokemons(db.Model):
     __tablename__ = 'teams_pokemons'
 
-    def __init__(self,team_id, pokemon_id):
+    def __init__(self,team_id,pokemon_id):
         self.team_id = team_id
         self.pokemon_id = pokemon_id
 
@@ -83,4 +90,8 @@ class TeamPokemons(db.Model):
 
     def save(self):
         db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
         db.session.commit()
