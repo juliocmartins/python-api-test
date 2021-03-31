@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from src.models import Teams,TeamPokemons
+from src.models import Teams,TeamPokemons,Trainers
 from src.schema import *
 import json
 
@@ -8,6 +8,11 @@ class TeamsController():
         pass
 
     def save_team(self, tid,team):
+        trainer = Trainers.query.filter_by(id = tid).first()
+
+        if not trainer:
+            return jsonify({"message":"Who are you?"}), 400
+
         prev_team = Teams.query.filter_by(trainer_id=tid).first()
 
         if prev_team:

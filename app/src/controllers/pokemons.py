@@ -16,7 +16,7 @@ class PokemonsController():
             q = q.filter_by(name=filters['name'])
         
         if('type' in filters):
-            q = q.join(PokemonsTypes, PokemonsTypes.pokemon_id == Pokemons.id).filter(PokemonsTypes.poke_type == filters['type'])
+            q = q.join(PokemonsTypes).filter(PokemonsTypes.poke_type == filters['type'])
             
         monsters = q.all()
         return schema.dumps(monsters, many=True), 200
