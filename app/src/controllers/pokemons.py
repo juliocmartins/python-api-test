@@ -12,18 +12,28 @@ class PokemonsController():
         schema = PokemonsSchema()
         q = Pokemons.query
         
-        if('name' in filters):
-            q = q.filter_by(name=filters['name'])
-        
-        if('type' in filters):
-            q = q.join(PokemonsTypes).filter(PokemonsTypes.poke_type == filters['type'])
+        try:
+            if('name' in filters):
+                q = q.filter_by(name=filters['name'])
             
-        monsters = q.all()
+            if('type' in filters):
+                q = q.join(PokemonsTypes).filter(PokemonsTypes.poke_type == filters['type'])
+                
+            monsters = q.all()
+        except Exception as e:
+            print(e)
+            return jsonify({"message":"error"}), 500
+
         return schema.dumps(monsters, many=True), 200
 
     def get_pokemons(self, id):
-        schema = PokemonsSchema()
-        monster = Pokemons.query.filter_by(id=id).first()
+        try:
+            schema = PokemonsSchema()
+            monster = Pokemons.query.filter_by(id=id).first()
+        except Exception as e:
+            print(e)
+            return jsonify({"message":"error"}), 500
+
         
         return schema.dumps(monster), 200
 

@@ -22,6 +22,8 @@ class TeamsController():
             return jsonify({"message":"Missing pokemons"}), 400
         elif len(team['pokemons']) > 6:
             return jsonify({"message":"Too much monsters!"}), 400
+        elif len(team["name"]) < 5:
+            return jsonify({"message":"Give a bigger name!"}), 400
 
         try:
             new_tean = Teams(name=team["name"],trainer_id=tid)
