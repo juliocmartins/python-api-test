@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+
+  mariadb:
+    image: "mariadb:10.2"
+    container_name: app_flask_mariadb
+    command: --lower_case_table_names=1 --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    environment:
+     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+     - dbdata:/var/lib/mysql
+    ports:
+     - "3306:3306"
+    networks:
+     - app-network
+
+  app:
+    build: 
+      context: ./docker
+      dockerfile: app.Dockerfile
+    container_name: app_flask
+    restart: always
+    env_file: ./docker/.env
+    ports:
+      - "8080:8080"
+    volumes:
+     - ./app:/app
+    networks:
+     - app-network
+
+  nginx:
+    build: 
+      context: ./docker
+      dockerfile: nginx.Dockerfile
+    container_name: app_flask_nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+     - ./app:/app
+    networks:
+     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:
+    driver: local

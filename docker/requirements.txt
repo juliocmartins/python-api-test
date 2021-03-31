@@ -1,0 +1,8 @@
+Flask==1.1.2
+Flask-SQLAlchemy==2.4.3
+SQLAlchemy==1.3.18
+flask-marshmallow==0.14.0
+marshmallow-sqlalchemy==0.24.2
+PyMySQL==1.0.2
+uwsgi
+pytest
