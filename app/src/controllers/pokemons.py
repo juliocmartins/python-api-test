@@ -1,4 +1,4 @@
-from src import app, db, jsonify
+from flask import jsonify
 from src.models import Pokemons,PokemonsTypes
 from src.schema import PokemonsSchema
 

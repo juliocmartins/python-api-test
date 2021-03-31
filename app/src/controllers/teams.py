@@ -1,6 +1,6 @@
-from flask import Flask, jsonify
+from flask import jsonify
 from src.models import Teams,TeamPokemons,Trainers
-from src.schema import *
+from src.schema import TeamPokemonsSchema,TeamsSchema
 import json
 
 class TeamsController():

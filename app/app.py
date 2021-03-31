@@ -1,5 +1,6 @@
-from src import app
+from src import create_app
+
+app = create_app()
 
 if __name__ == "__main__":
-    app.secret_key = os.urandom(24)
     app.run()

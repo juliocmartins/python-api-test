@@ -98,10 +98,23 @@ http://localhost/trainers/<int:id>/team
 Uma linguagem que venho aprendendo nos ultimos meses, procuro consolidar o conhecimento, trazendo a bagagem de outras linguagens
 
 ### Flask
-Por ser um mivro framework nos obriga a fazer muita coisa manualmente. Assim para um apredizado inicial é ideal para fortalecer e fixar o conhecimento ao longo do estudo.
+Por ser um micro framework, é necessário fazer muita coisa manualmente e assim para um apredizado inicial é ideal para fortalecer e fixar o conhecimento ao longo do estudo.
 
 ### MariaDB 
 Um dos bancos usandos em larga escala, foi escolhido para persisitir os dados da API e representar um acesso de banco externo.
 
 ### Docker
-Ao usar os serviços da aplicação separados podemos usar uma estrutura escalavel e de facil manutenção
+Ao usar cada serviço da aplicação separados podemos usar uma estrutura escalavel e de facil manutenção
+
+### Nginx/uwsgi
+Afim de simular um ambiente de produção, foi usado o protocolo de interface WSGI junto com o web server nginx para lidar com as requisições
+
+
+@matheuscoliveira
+@ivesmatheus
+@loide
+@taigosant
+@kevinobruno
+@gilvan.reis
+@ThalitaAlves
+@zeinafoliveira

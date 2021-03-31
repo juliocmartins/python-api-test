@@ -1,31 +1,40 @@
 import os
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
-app = Flask(__name__)
+db = SQLAlchemy()
+ma = Marshmallow()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+def create_app():
+    app = Flask(__name__)
 
-app.config['APP_NAME'] = os.environ.get("APP_NAME")
-app.config['FLASK_APP'] = os.environ.get("FLASK_APP")
-app.config['FLASK_ENV'] = os.environ.get("FLASK_ENV")
-app.config['FLASK_DEBUG'] = os.environ.get("FLASK_DEBUG")
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("SQLALCHEMY_DATABASE_URI")
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
+    app.config['APP_NAME'] = os.environ.get("APP_NAME")
+    app.config['FLASK_APP'] = os.environ.get("FLASK_APP")
+    app.config['FLASK_ENV'] = os.environ.get("FLASK_ENV")
+    app.config['FLASK_DEBUG'] = os.environ.get("FLASK_DEBUG")
 
-@app.route('/helthcheck')
-def helthcheck():
-    return "OK"
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return "<h1>Not Found</h1>Hey, get out of here!!!"
+    @app.route('/')
+    def index():
+        return "Index, nothing here"
 
-from src import routes
-from src.models import *
-from src.schema import *
+    @app.route('/helthcheck')
+    def helthcheck():
+        return "OK"
 
-db.create_all()
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return "<h1>Not Found</h1>Hey, get out of here!!!"
+
+    import src.routes
+
+    # with app.app_context():
+    routes.init_app(app)
+    db.init_app(app)
+    ma.init_app(app)
+
+    return app

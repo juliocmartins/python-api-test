@@ -1,4 +1,4 @@
-from src import app, db
+from src import db
 
 class Pokemons(db.Model):
     __tablename__ = 'pokemons'

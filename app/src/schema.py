@@ -1,4 +1,4 @@
-from src import app, ma
+from src import ma
 from src.models import *
 
 class PokemonsTypesSchema(ma.SQLAlchemyAutoSchema):
