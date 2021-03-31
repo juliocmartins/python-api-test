@@ -5,10 +5,11 @@ services:
   mariadb:
     image: "mariadb:10.2"
     container_name: app_flask_mariadb
-    command: --lower_case_table_names=1 --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+    command: --lower_case_table_names=1 --sql_mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION --init-file /tmp/init.sql
     environment:
      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     volumes:
+     - ./docker/init.sql:/tmp/init.sql
      - dbdata:/var/lib/mysql
     ports:
      - "3306:3306"
