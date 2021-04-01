@@ -6,4 +6,5 @@ flask-marshmallow==0.14.0
 marshmallow-sqlalchemy==0.24.2
 PyMySQL==1.0.2
 uwsgi
-pytest
+pytest==6.2.2
+pytest-flask==1.2.0

@@ -17,6 +17,7 @@ services:
      - app-network
 
   app:
+    image: "app_flask"
     build: 
       context: ./docker
       dockerfile: app.Dockerfile
@@ -31,6 +32,7 @@ services:
      - app-network
 
   nginx:
+    image: "app_flask_nginx"
     build: 
       context: ./docker
       dockerfile: nginx.Dockerfile
