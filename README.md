@@ -64,12 +64,20 @@ http://localhost/trainers/<int:id>/
 ```
 POST
 http://localhost/trainers
+
+{
+    "name" : "Trainer"
+}
 ```
 ---
 ### **Atualizar um treinador pelo Id cadastrado**
 ```
 PUT
 http://localhost/trainers/<int:id>
+
+{
+    "name" : "Trainer"
+}
 ```
 ---
 ### **Excluir um treinador pelo Id cadastrado**
@@ -82,12 +90,22 @@ http://localhost/trainers/<int:id>
 ```
 POST
 http://localhost/trainers/<int:id>/team
+
+{
+    "name" : "Team"
+    "pokemons" : [1,2,3]
+}
 ```
 ---
 ### **Atualizar um time de um trainador cadastrado**
 ```
 PUT
 http://localhost/trainers/<int:id>/team
+
+{
+    "name" : "Team"
+    "pokemons" : [1,2,3]
+}
 ```
 ---
 ### **Deletar um time de um trainador cadastrado**
