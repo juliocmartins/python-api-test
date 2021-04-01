@@ -96,6 +96,11 @@ DELETE
 http://localhost/trainers/<int:id>/team
 ```
 
+# Teste de unidade
+```
+pytest app/tests/ -v
+```
+
 # Justificativa
 
 ### Python
