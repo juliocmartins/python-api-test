@@ -17,7 +17,7 @@
 
 ### **Copie esse repositorio**
 ```
-git clone https://github.com/juliocmartins/simple-flask-api.git
+git clone https://github.com/juliocmartins/python-api-test.git
 ```
 ### **No diretorio raiz execute o docker-compose para subir os serviços**
 ``` 
