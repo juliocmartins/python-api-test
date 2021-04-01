@@ -9,6 +9,10 @@
 - Nginx
 - uwsgi
 
+### Outras ferramentas
+ - VSCode
+ - Insomnia
+
 ## Instalação
 
 ### **Copie esse repositorio**
@@ -95,7 +99,7 @@ http://localhost/trainers/<int:id>/team
 # Justificativa
 
 ### Python
-Uma linguagem que venho aprendendo nos ultimos meses, procuro consolidar o conhecimento, trazendo a bagagem de outras linguagens
+Uma linguagem que venho aprendendo nos ultimos meses, procuro consolidar o conhecimento, trazendo a bagagem de outras linguagens.
 
 ### Flask
 Por ser um micro framework, é necessário fazer muita coisa manualmente e assim para um apredizado inicial é ideal para fortalecer e fixar o conhecimento ao longo do estudo.
@@ -104,10 +108,13 @@ Por ser um micro framework, é necessário fazer muita coisa manualmente e assim
 Um dos bancos usandos em larga escala, foi escolhido para persisitir os dados da API e representar um acesso de banco externo.
 
 ### Docker
-Ao usar cada serviço da aplicação separados podemos usar uma estrutura escalavel e de facil manutenção
+Ao usar cada serviço da aplicação separados podemos usar uma estrutura escalavel e de facil manutenção.
 
 ### Nginx/uwsgi
-Afim de simular um ambiente de produção, foi usado o protocolo de interface WSGI junto com o web server nginx para lidar com as requisições
+Afim de simular um ambiente de produção, foi usado o protocolo de interface WSGI junto com o web server nginx para lidar com as requisições.
+
+### O que posso melhorar/Proximos passos
+Aprender novos conceitos e funcionalidades, melhorar os testes de unidade, implementar Blueprint e Migrations, assim como pacotes restfull ou restx.
 
 
 @matheuscoliveira
