@@ -16,6 +16,9 @@ class TrainersController():
 
     def get_trainer(self, uid):
         trainer = Trainers.query.filter_by(id = uid).first()
+
+        if not trainer:
+            return jsonify({"message":"not_found"}), 404
         
         schema = TrainersSchema()
         return schema.dumps(trainer), 200
@@ -28,7 +31,8 @@ class TrainersController():
             trainer.save()
 
             schema = TrainersSchema()
-        except:
+        except Exception as e:
+            print(e)
             return jsonify({"message":"error"}), 500
 
         return schema.dumps(trainer), 201

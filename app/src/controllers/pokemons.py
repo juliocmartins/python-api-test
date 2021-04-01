@@ -30,6 +30,10 @@ class PokemonsController():
         try:
             schema = PokemonsSchema()
             monster = Pokemons.query.filter_by(id=id).first()
+
+            if not monster:
+                return jsonify({"message":"This one was not caught"}), 404
+
         except Exception as e:
             print(e)
             return jsonify({"message":"error"}), 500

@@ -7,8 +7,8 @@ class TeamsController():
     def __init__(self):
         pass
 
-    def save_team(self, tid,team):
-        trainer = Trainers.query.filter_by(id = tid).first()
+    def save_team(self,tid,team):
+        trainer = Trainers.query.filter_by(id=tid).first()
 
         if not trainer:
             return jsonify({"message":"Who are you?"}), 400
