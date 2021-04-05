@@ -92,7 +92,7 @@ POST
 http://localhost/trainers/<int:id>/team
 
 {
-    "name" : "Team"
+    "name" : "Team",
     "pokemons" : [1,2,3]
 }
 ```
@@ -103,7 +103,7 @@ PUT
 http://localhost/trainers/<int:id>/team
 
 {
-    "name" : "Team"
+    "name" : "Team",
     "pokemons" : [1,2,3]
 }
 ```
@@ -138,13 +138,3 @@ Afim de simular um ambiente de produção, foi usado o protocolo de interface WS
 
 ### O que posso melhorar/Proximos passos
 Aprender novos conceitos e funcionalidades, melhorar os testes de unidade, implementar Blueprint e Migrations, assim como pacotes restfull ou restx.
-
-
-@matheuscoliveira
-@ivesmatheus
-@loide
-@taigosant
-@kevinobruno
-@gilvan.reis
-@ThalitaAlves
-@zeinafoliveira

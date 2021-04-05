@@ -28,12 +28,11 @@ def create_app():
 
     @app.errorhandler(404)
     def page_not_found(e):
-        return "<h1>Not Found</h1>Hey, get out of here!!!"
+        return "<h1>Not Found</h1>Hey, get out of here!!!", 404
 
-    import src.routes
-
-    # with app.app_context():
+    from src import routes
     routes.init_app(app)
+
     db.init_app(app)
     ma.init_app(app)
 
